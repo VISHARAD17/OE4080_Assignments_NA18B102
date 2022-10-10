@@ -1,4 +1,4 @@
-function P = presr(H,d,T,z,x,t)
+function P = pressure(H,d,T,z,x,t)
 
 syms k real
 w = (2*pi)/T;
@@ -17,9 +17,9 @@ wvtb = a(:,1:2);
 clc;
 clearvars;
 
-Dp = 320; %input("Value of depth = ") known
-D = 10; %input("Value of diameter = ") known
-Ln = 210; %known value of cylinder
+Dp = 320;  %input("Value of depth = ") known
+D = 10;    %input("Value of diameter = ") known
+Ln = 210;  %known value of cylinder
 H = 18; %input("Value of wave height = ") 
 g = 9.81;
 rho = 1025;
@@ -46,8 +46,8 @@ for i = 1:length(tser)
         
         z = linspace(0,-210,100);
         for j = 1:numel(z)
-           f1(j) = Ch*presr(H,Dp,T,z(j),x1(m),t);
-           f2(j) = Ch*presr(H,Dp,T,z(j),x2(m),t);
+           f1(j) = Ch*pressure(H,Dp,T,z(j),x1(m),t);
+           f2(j) = Ch*pressure(H,Dp,T,z(j),x2(m),t);
         end
     end
    F1(i) = trapz(double(z),f1);

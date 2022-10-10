@@ -18,8 +18,8 @@ Ch = 2;
 %x = 0;
 f1 = zeros(100,1);
 f2 = f1;
-%Assumption taken is Froude-krylov Force is F = rho*pi*(D^2)*accel/4
-%because D/L is very small
+%Assumption -> Froude-krylov Force is F = rho*pi*(D^2)*accel/4
+% the reason is that D/L is very small
 
 for i = 1:length(tser)
     t = tser(i);
@@ -32,8 +32,8 @@ for i = 1:length(tser)
         eta = (H/2)*cos(k*x(m) - omega*t);
         z = linspace(eta,-210,100);
         for j = 1:numel(z)
-           f1(j) = Ch*pres(H,L,Dp,T,z(j),x1(m),t);
-           f2(j) = Ch*pres(H,L,Dp,T,z(j),x2(m),t);
+           f1(j) = Ch*pressure(H,L,Dp,T,z(j),x1(m),t);
+           f2(j) = Ch*pressure(H,L,Dp,T,z(j),x2(m),t);
         end
     end
    F1(i) = trapz(double(z),f1);
